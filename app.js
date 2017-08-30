@@ -1,12 +1,21 @@
-// TODO
-
 class GroceryListItem extends React.Component {
+
   constructor(props) {
-    super(props);
+    super(props)
+    this.state = {
+      hover: false
+    }
+    this.hoverHandler = this.hoverHandler.bind(this)
   }
+
+  hoverHandler() {
+    this.setState({hover: !this.state.hover})
+  }
+
   render() {
+    const style = this.state.hover ? {fontWeight: 'bold'} : {}
     return (
-      <li>{this.props.item}</li>
+      <li style={style} onMouseEnter={this.hoverHandler} onMouseLeave={this.hoverHandler}>{this.props.item}</li>
     )
   }
 }
